@@ -1,6 +1,4 @@
 import smtplib
-import sys
-sys.path.append("..")
 import setting
 
 from email.mime.multipart import MIMEMultipart

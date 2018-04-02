@@ -133,22 +133,32 @@ body {
                 </div>
             </div>
             <div class = "offset-0 offset-md-2 col-12 col-md-5 text-center">
-                <form class="form-signin text-center" action="\sendMail" method="post">
+                <form class="form-signin text-center" action="\sendMail" method="post" onSubmit="alert('Thank you for your attention.');">
                     <img class="mb-4" src="static/images/epContact.png"  style="max-height:90px;max-width:90px">
                     <label for="author" class="sr-only">Your Email Address:</label>
-                    <input type="email" class="form-control" id="author" name="author" placeholder="Your Email Address">
+                    <input type="email" class="form-control" id="author" name="author" value="" placeholder="Your Email Address" required="">
 
                     <label for="subject" class="sr-only">Subject:</label>
-                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
+                    <input type="text" class="form-control" id="subject" name="subject" value="" placeholder="Subject" required="">
 
                     <div class="form-group" style="padding-top:5px">
                       <label for="message" class="sr-only">Comment:</label>
-                      <textarea class="form-control" rows="5" id="message" name="message" placeholder="Comment" type="text"></textarea>
+                      <textarea class="form-control" rows="5" id="message" name="message" value="" placeholder="Comment" type="text" required=""></textarea>
                     </div>
                     <button class="btn btn-lg btn-primary btn-block" style="background-color:#343a40!important" type="submit">Send</button>
                 </form>
             </div>
         </div>
     </div>
+
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Popper -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/js/mdb.min.js"></script>
 </body>
 </html>
