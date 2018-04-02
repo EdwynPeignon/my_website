@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Page d'accueil</title>
+
+<!-- icon w3school -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.min.css" rel="stylesheet">
+
+<style>
+    html,
+body {
+  height: 100%;
+}
+
+body {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #fff;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .checkbox {
+  font-weight: 400;
+}
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+</style>
+</head>
+<body>
+
+    <nav class="navbar fixed-top navbar-dark bg-dark">
+        <a href="/"><img src="static/images/ep.png" style="max-width: 60px;padding-left:10px"/></a>
+
+        <ul class="navbar-nav flex-row d-none d-md-flex">
+            <li class="align-self-center nav-item">
+                <a class="nav-link p-2" href="https://www.linkedin.com/in/edwyn-peignon-06520b91/" target="_blank">
+                    <i class="fa fa-linkedin-square fa-inverse fa-2x"></i></a>
+            </li>
+            <li class="align-self-center nav-item">
+                <a class="nav-link p-2" href="#"><i class="fa fa-git-square fa-inverse fa-2x"></i></a>
+            </li>
+            <li class="align-self-center nav-item active">
+                <a class="p-2" href="/studies" style="color:white">Studies</a>
+
+            </li>
+            <li class="align-self-center nav-item active">
+                <a class="p-2" href="/contact" style="color:white">Contact me</a>
+            </li>
+        </ul>
+        <button class="navbar-toggler collapsed d-flex d-md-none" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarsExample01" style="">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="p-2" href="/studies" style="color:white">Studies</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="p-2" href="/contact" style="color:white">Contact me</a>
+                </li>
+                <li class="nav-item">
+                    <span class="nav-link"><a class="p-2" href="https://www.linkedin.com/in/edwyn-peignon-06520b91/" target="_blank">
+                        <i class="fa fa-linkedin-square fa-inverse fa-2x"></i></a><a class="p-2" href="#">
+                        <i class="fa fa-git-square fa-inverse fa-2x"></i></a></span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <div class="row d-flex">
+            <div class="col-12 col-md-4 align-self-center">
+                <h1 class="h3 mb-3 font-weight-normal">Feel free to contact me!</h1>
+                <p>
+                    Feel free to add me on LinkedIn or to sent me a message if you are interested in my profile and want to know more about me.
+                </p>
+                <div class="d-flex bd-highlight mb-3">
+                    <div class="align-self-center p-2 bd-highlight fa fa fa-envelope fa-1x"></div>
+                    <div class="align-self-center p-2 bd-highlight">edwynpeignon.website@gmail.com</div>
+                </div>
+                <div class="d-flex bd-highlight mb-3">
+                    <div class="align-self-center p-2 bd-highlight fa fa-mobile-phone fa-2x"></div>
+                    <div class="align-self-center p-2 bd-highlight">07 78 19 82 63</div>
+                </div>
+                <div class="d-flex bd-highlight mb-3">
+                    <div class="align-self-center p-2 bd-highlight fa fa-map-marker fa-2x"></div>
+                    <div class="align-self-center p-2 bd-highlight">3 rue Moll 49100 Angers</div>
+                </div>
+            </div>
+            <div class = "offset-0 offset-md-2 col-12 col-md-5 text-center">
+                <form class="form-signin text-center" action="\sendMail" method="post">
+                    <img class="mb-4" src="static/images/epContact.png"  style="max-height:90px;max-width:90px">
+                    <label for="author" class="sr-only">Your Email Address:</label>
+                    <input type="email" class="form-control" id="author" name="author" placeholder="Your Email Address">
+
+                    <label for="subject" class="sr-only">Subject:</label>
+                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
+
+                    <div class="form-group" style="padding-top:5px">
+                      <label for="message" class="sr-only">Comment:</label>
+                      <textarea class="form-control" rows="5" id="message" name="message" placeholder="Comment" type="text"></textarea>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block" style="background-color:#343a40!important" type="submit">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
