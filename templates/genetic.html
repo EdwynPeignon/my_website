@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Spread your students</title>
+
+    <!-- icon w3school -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.min.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.slidecontainer {
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+    <nav class="navbar fixed-top navbar-dark bg-dark">
+        <a href="/"><img src="static/images/ep.png" style="max-width: 60px;padding-left:10px"/></a>
+
+        <ul class="navbar-nav flex-row d-none d-md-flex">
+            <li class="align-self-center nav-item">
+                <a class="nav-link p-2" href="https://www.linkedin.com/in/edwyn-peignon-06520b91/" target="_blank">
+                    <i class="fa fa-linkedin-square fa-inverse fa-2x"></i></a>
+            </li>
+            <li class="align-self-center nav-item">
+                <a class="nav-link p-2" href="#"><i class="fa fa-git-square fa-inverse fa-2x"></i></a>
+            </li>
+            <li class="align-self-center nav-item active">
+                <a class="p-2" href="/studies" style="color:white">Personal work</a>
+
+            </li>
+            <li class="align-self-center nav-item active">
+                <a class="p-2" href="/contact" style="color:white">Contact me</a>
+            </li>
+        </ul>
+        <button class="navbar-toggler collapsed d-flex d-md-none" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-md-none" id="navbarsExample01" style="">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="p-2" href="/studies" style="color:white">Personal work</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="p-2" href="/contact" style="color:white">Contact me</a>
+                </li>
+                <li class="nav-item">
+                    <span class="nav-link"><a class="p-2" href="https://www.linkedin.com/in/edwyn-peignon-06520b91/" target="_blank">
+                        <i class="fa fa-linkedin-square fa-inverse fa-2x"></i></a><a class="p-2" href="#">
+                        <i class="fa fa-git-square fa-inverse fa-2x"></i></a></span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container mb-3" style="padding-top:100px;padding-bottom:10px">
+        <div class="row justify-content-center">
+            <h1>Spread your students</h1>
+        </div>
+    </div>
+    <div class="container mb-3">
+        <div class="row">
+            <p>You're a teacher, you want to spread your classroom in multiple groups with the same average. Here is a tool for you.
+            This genetic algorithm will find you a great solution.</p>
+            <p>
+                The mark should be a decimal and the name syntax shouldn't contain any special characters.
+            </p>
+        </div>
+        <div class="row">
+            <p>
+                Here are some example of syntax for the name :
+            </p>
+            <ul>
+                <li>student_*</li>
+                <li>student-*</li>
+                <li>Name Lastname</li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="container mt-3 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="prenom">Name :</label>
+                                <input type="text" class="form-control" id="prenom" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="note">Mark :</label>
+                                <input type="number" class="form-control" id="note" required>
+                            </div>
+                            <button id="addStudent"  onclick="addTab()" class="btn btn-primary" >Ajouter</button>
+
+                        </div>
+                        <div class="col-md-8">
+                            <table id="myTable" class="table">
+                                <thead>
+                                    <tr >
+                                        <th style="width: 40%">Name</th>
+                                        <th style="width: 40%">Mark</th>
+                                        <th style="width: 20%"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ajoute">
+                                </tbody>
+                            </table>
+                            <div class="container">
+                                <div id="buttonTab" class="d-flex flex-row-reverse">
+                                    <button id='page_0' type='button' onclick='showPage(0)' class='p-2 btn btn-primary'>1</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row d-flex " style="margin-top:10px;">
+
+                        <div class="col-md-3 align-self-center offset-md-1">
+                            <div class="slidecontainer w-75 ">
+                                <input type="range" min="2" max="250" value="140" class="slider" id="myRange" />
+                                <p>Number of generation : <span id="demo"></span></p>
+                            </div>
+                        </div>
+                        <div class="col-md-7 offset-md-1">
+                            <form id="form" action="/generate" method="post">
+                                <div class="form-group">
+                                    <label for="nbreGroups">Desired number of group</label>
+                                    <input id="nbreGroups" class="form-control" type="number" step="1" name="group" required />
+                                </div>
+                                <input type="hidden" id="tab" name="tab" />
+                                <input type="hidden" id="slidebar" name="slidebar" />
+                                <button type="submit" class="btn btn-primary">Generate</button>
+                            </form>
+                            <p style="color:red">{{error}}</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mb-3" style="margin-top:30px;">
+        <div class="row row justify-content-center">
+            <h4>Graphic showing the evolution of the solution through the generations</h4>
+        </div>
+        <div class="row justify-content-center">
+            <img src="static/images/graph.png"  class="border border-dark rounded" style="max-height: 500px" alt="" />
+        </div>
+    </div>
+
+
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Popper -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/js/mdb.min.js"></script>
+    <!-- Bootrap table -->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+
+</body>
+<script>
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+$('#form').submit(function() {
+    document.getElementById("slidebar").value = document.getElementById("myRange").value ;
+    return true;
+});
+
+</script>
+<script>
+        var monTableau = Array();
+        var monTableauActive = Array();
+        var arrayMaxValue = 5;
+
+        var monTableauId = 0;
+        var monTableauActiveId = 0;
+        var page = 0;
+
+        var actualPage = 0;
+
+        function addTab() {
+            if (monTableauActive.length % 5 != 0 || monTableauActive.length == 0){
+                $("#ajoute").append("<tr id='"+ monTableauId +"'><td>" + document.getElementById("prenom").value+ "</td><td>" + document.getElementById("note").value
+                + "</td><td><button class='btn btn-danger fa fa-trash btn-sm' onclick='deleteTab(" + monTableauId + ")'></td></tr>");
+                if(page != actualPage){
+                    document.getElementById(monTableauId).style.display = "none";
+                }
+            }
+            else{
+                for(var i = actualPage * arrayMaxValue; i < actualPage * arrayMaxValue + arrayMaxValue; i ++){
+                    document.getElementById(monTableauActive[i]).style.display = "none";
+                }
+                page = page +1;
+                actualPage = page;
+                $("#ajoute").append("<tr id='"+ monTableauId +"'><td>" + document.getElementById("prenom").value+ "</td><td>" + document.getElementById("note").value
+                + "</td><td><button class='btn btn-danger fa fa-trash btn-sm' onclick='deleteTab(" + monTableauId + ")'></td></tr>");
+                $("#buttonTab").prepend("<button id='page_"+ page +"' type='button' onclick='showPage("+ page +")' class='p-2 btn btn-primary' active>" + (page +1 ) + "</button>");
+
+            }
+
+            monTableauActive.push(monTableauId);
+
+            monTableau.push(document.getElementById("prenom").value);
+            monTableau.push(document.getElementById("note").value);
+            document.getElementById("tab").value = monTableau;
+            monTableauId = monTableauId + 2;
+            var json_string = JSON.stringify(monTableau);
+        }
+
+        function showPage(pageValue){
+            if(pageValue != actualPage){
+
+                var pageFull = monTableauActive.length % 5;
+                if(pageFull == 0){
+                    pageFull = 5;
+                }
+                if(pageValue == page){
+                    for(var a = pageValue * arrayMaxValue ; a < pageValue * arrayMaxValue + pageFull ; a ++){
+                        document.getElementById(monTableauActive[a]).style.display = "";
+                    }
+                }
+                else{
+                    for(var b = pageValue * arrayMaxValue; b < pageValue * arrayMaxValue + arrayMaxValue; b ++){
+                        document.getElementById(monTableauActive[b]).style.display = "";
+                    }
+                }
+
+                if(actualPage == page){
+                    for(var c = (actualPage * arrayMaxValue) ; c < (actualPage * arrayMaxValue + pageFull) ; c ++){
+                        document.getElementById(monTableauActive[c]).style.display = "none";
+                    }
+                }
+                else{
+                    for(var d = actualPage * arrayMaxValue; d < actualPage * arrayMaxValue + arrayMaxValue; d ++){
+                        document.getElementById(monTableauActive[d]).style.display = "none";
+                    }
+                }
+                actualPage = pageValue;
+
+
+            }
+        }
+
+
+        function deleteTab(intValue) {
+            var index_mon_Tableau_active = monTableauActive.indexOf(intValue)
+            var index_mon_Tableau = index_mon_Tableau_active * 2;
+
+            var lastPage = page - 1
+
+            $('#' + intValue).fadeOut(300, function(){ $(this).remove();})
+
+            monTableau.splice(index_mon_Tableau,2);
+            monTableauActive.splice(index_mon_Tableau_active,1);
+
+            document.getElementById("tab").value = monTableau;
+
+
+
+            if(monTableauActive.length % arrayMaxValue == 0){
+                if(page != 0){
+                    document.getElementById("page_" + page).remove();
+
+
+                    if(actualPage == page){
+                        actualPage = page - 1;
+                        for(var x = actualPage * arrayMaxValue; x < actualPage * arrayMaxValue + arrayMaxValue; x++ ){
+                            document.getElementById(monTableauActive[x]).style.display = "";
+                        }
+                    }
+
+                    page = page - 1;
+                }
+
+            }
+
+        }
+	</script>
+</html>
