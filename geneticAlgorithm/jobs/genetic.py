@@ -35,8 +35,7 @@ class Genetique:
         self.fitness = []
         self.first_student = None
 
-
-    # Checked
+    # Affect to all class the students models
     @fn_timer
     def classes_affectation(self,number_classes):
         classes_list = []
@@ -51,58 +50,37 @@ class Genetique:
             class_.set_students(student_list)
             self.classes.append(class_)
 
-
+    # Index data to ES
     @fn_timer
     def indexing_data_elasticsearch(self,class_):
         es = Elasticsearch()
-
         dic = class_.to_dict()
-
         es.index(index="result_algo3_exemple_"+str(self.test), doc_type="classe", body=dic,id=dic["class_id"])
 
-
+    # Indexe generation to ES
     @fn_timer
     def indexing_generation_elasticsearch(self,liste):
-
         generation_id = []
-
         for class_ in liste:
             generation_id.append(class_.id)
 
-
+    # Rank all the classes by their evaluation
     @fn_timer
     def rank(self,liste):
         rank = []
-        average = liste[0].class_average()
-
-        #print("          ------ Ranking de toutes les classes ------ \n")
-        #print("Moyenne des classes : " + str(average) + "\n")
-
         for classroom in liste:
-            #print("Je suis la")
             classroom.eval()
             rank.append(classroom)
-            #self.indexing_data_elasticsearch(classroom)
-
         rank.sort(key=attrgetter('evaluation'))
         self.first_student = rank[0]
-        #for z in rank:
-        #    print("\nID class : " + str(z.id) + " evaluation : " + str(z.evaluation) + " generation : " + str(z.generation) + " Resultat : " + str(z.result) + " Eligible : " + str(z.eligible))
-
-        #print("          ------ Fin du ranking ----- \n")
-
         return rank
 
+    # Reproduction by crossbreeding
     @fn_timer
     def crossbreeding_function(self, liste,max_id):
-
         quarter = int(len(liste) / 2)
         half = int(len(liste) / 2)
-
-
-
         new_liste = []
-
         max_index = max_id + 1
 
         for i in range(quarter):
@@ -131,12 +109,11 @@ class Genetique:
             new_specimen.adapting_group_after_mutating(liste[int(first_index)])
 
             new_liste.append(new_specimen)
-            #print("END \n")
         self.all_classes += new_liste
 
         return new_liste
 
-
+    # Selection by tournament 2 specimen taken randomly has to confront
     @fn_timer
     def tournament(self):
 
@@ -165,10 +142,9 @@ class Genetique:
                 selection.append(self.classes[second_random])
             else:
                 selection.append(self.classes[first_random])
-
-
         return selection
 
+    # Reproduction by mutation
     @fn_timer
     def mutation_allele(self,liste,max_id):
         count = max_id +1
@@ -209,53 +185,24 @@ class Genetique:
 
         return new_liste
 
-    @fn_timer
-    def new_students(self,max_id,liste):
-
-        quarter = int(len(liste)/ 2)
-
-        random_list = self.classes_affectation(quarter, self.averages)
-        count = max_id +1
-        for class_ in random_list:
-            class_.id = count
-            class_.groups_affecting(self.nbr_group)
-            count += 1
-
-        return random_list
-
+    # Reproduce the population
     @fn_timer
     def reproduction(self):
+
         selection = self.tournament()
-        #print(str(len(selection)))
-
         max_id = max(list(map(attrgetter('id'), self.classes)))
-
         mutation_allele =  self.mutation_allele(selection[:int(len(selection)/2)],max_id)
-        #print(str(len(mutation_allele)))
-
         max_id = max(list(map(attrgetter('id'),mutation_allele)))
-
-        #self.rank(selection)
-
-        crossed_liste = self.crossbreeding_function(selection,max_id)
-        #print(str(len(crossed_liste)))
-
-        #self.rank(crossed_liste)
-
-        max_id = max(list(map(attrgetter('id'), crossed_liste)))
-
-        #alea = self.new_students(max_id,selection)
-        #print(str(len(alea)))
-
+        crossed_list = self.crossbreeding_function(selection,max_id)
         self.classes = []
-
-        self.classes = selection + mutation_allele + crossed_liste #+alea
+        self.classes = selection + mutation_allele + crossed_list
 
         for class_ in self.classes:
             class_.eval()
 
         self.rank(self.classes)
 
+    # Sort the classes and set them eligible or not (for the case where sex is a criteria)
     def sort_all_classes(self,example_id):
         self.all_classes.sort(key=attrgetter("generation"))
 
@@ -265,8 +212,6 @@ class Genetique:
         for class_ in self.all_classes:
             if (class_.generation != last_generation):
                 generation = Generation(example_id)
-                #print(list(map(attrgetter("result"),classes_by_generation)))
-                #print(list(map(attrgetter("evaluation"), classes_by_generation)))
                 generation.import_values(list(map(attrgetter("result"),classes_by_generation)),last_generation,list(map(attrgetter("evaluation"),classes_by_generation)))
                 classes_by_generation = []
                 classes_by_generation.append(class_)
@@ -274,6 +219,3 @@ class Genetique:
             else:
                 if class_.eligible:
                     classes_by_generation.append(class_)
-                    #print("Class ID : " + str(class_.id)  +  " Evaluation : " + str(class_.evaluation) + " Result : " + str(class_.result) + " eligible : " + str(class_.eligible))
-
-

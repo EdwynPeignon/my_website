@@ -68,7 +68,7 @@
                     <i class="fa fa-linkedin-square fa-inverse fa-2x"></i></a>
             </li>
             <li class="align-self-center nav-item">
-                <a class="nav-link p-2" href="#"><i class="fa fa-git-square fa-inverse fa-2x"></i></a>
+                <a class="nav-link p-2" href="https://github.com/EdwynPeignon" target="_blank"><i class="fa fa-git-square fa-inverse fa-2x"></i></a>
             </li>
             <li class="align-self-center nav-item active">
                 <a class="p-2" href="/studies" style="color:white">Personal work</a>
@@ -91,7 +91,7 @@
                 </li>
                 <li class="nav-item">
                     <span class="nav-link"><a class="p-2" href="https://www.linkedin.com/in/edwyn-peignon-06520b91/" target="_blank">
-                        <i class="fa fa-linkedin-square fa-inverse fa-2x"></i></a><a class="p-2" href="#">
+                        <i class="fa fa-linkedin-square fa-inverse fa-2x"></i></a><a class="p-2" href="https://github.com/EdwynPeignon" target="_blank">
                         <i class="fa fa-git-square fa-inverse fa-2x"></i></a></span>
                 </li>
             </ul>
@@ -122,7 +122,15 @@
                 <li>Name Lastname</li>
             </ul>
         </div>
-
+    </div>
+    <div class="container">
+        <div class="row">
+            <p>
+                <span class="text-warning">Be aware that the algorithm can take some times( at least 40 persons ).</span> To avoid this situation you can decrease the
+                number of  <a href="#" data-toggle="tooltip" title="Learn more about it downside the web page."> generation</a>.
+                You can stop from the 130th generation, you'll steal have great result.
+            </p>
+        </div>
     </div>
     <div class="container mt-3 mb-3">
         <div class="card">
@@ -138,7 +146,7 @@
                                 <label for="note">Mark :</label>
                                 <input type="number" class="form-control" id="note" required>
                             </div>
-                            <button id="addStudent"  onclick="addTab()" class="btn btn-primary" >Ajouter</button>
+                            <button id="addStudent"  onclick="addTab()" class="btn btn-primary" >Add</button>
 
                         </div>
                         <div class="col-md-8">
@@ -186,12 +194,51 @@
             </div>
         </div>
     </div>
+    <div class="container" style="padding-top:40px">
+        <div class="row justify-content-center">
+            <h2>Learn more about this genetic algorithm</h2>
+        </div>
+        <div class="row">
+            <p>Keywords :</p>
+        </div>
+        <div class="row">
+            <ul>
+                <li>Specimen : it represent an object with specific attributes. In our case it is represented by a list of students with specific attribution to a group for each student.</li>
+                <li>Population : it represent the number of specimens. </li>
+                <li>Generation : it represent the number of reproduction of the population. The first parents will be the generation 0, their child will represent the generation 1 and so on.</li>
+                <li>Selection : it represent how you'll define the elite of the population.</li>
+                <li>Reproduction : from the selected population you'll make next generation based on them.</li>
+            </ul>
+        </div>
+        <div class="row">
+            <p>This genetic algorithm has a started population of 256, it's a power of 2 because I choose to make a selection by tournament. As it said 2 specimens taken randomly will be
+            in competition, only one will be choose according to predefined criteria. They are more than one type of selection, I tried an elitist one like just keep the first half of the population.
+            Although the problem was the population tend to look alike to each others. Selection by tournament show more diversity and has better results in the long run.
+            </p>
+        </div>
+        <div class="row">
+            <p>After selecting the half of the population I reproduce them to reach the initial population number. I used two types of reproduction one is to mutate a part of the elite population giving
+                 birth to a new generation with small variation. The second one was to mixed two specimen into one, you can imagine an ADN and your taking the first part of one to combine to the second ADN.
+                And you repeat the operation till you get a satisfactory result. You maybe won't find the best solution but you'll get a great solution.
+            </p>
+        </div>
+        <div class="row justify-content-center">
+            <h3>Checking the performance with Kibana</h3>
+        </div>
+        <div class="row">
+            <p>
+                Having goods result on one try wasn't enough to ensure the performance of my algorithm. Then I indexed 100 tries results on ElasticSearch and made some visualisation
+                 on Kibana. The evaluation of a specimen was comparing the gap between the highest group average with the lowest group average. Better was the evaluation lowest was the gap.
+                You can see below a graph showing the gap average according to ascending generation. After the 100th generation the gap in average is under 0.1.
+            </p>
+        </div>
+    </div>
     <div class="container mb-3" style="margin-top:30px;">
         <div class="row row justify-content-center">
             <h4>Graphic showing the evolution of the solution through the generations</h4>
         </div>
-        <div class="row justify-content-center">
-            <img src="static/images/graph.png"  class="border border-dark rounded" style="max-height: 500px" alt="" />
+        <div class="row">
+            <img src="static/images/graph.png"  class="mx-auto d-block border border-dark rounded" style="max-height: 500px" alt="" />
         </div>
     </div>
 
@@ -222,7 +269,9 @@ $('#form').submit(function() {
     document.getElementById("slidebar").value = document.getElementById("myRange").value ;
     return true;
 });
-
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
 </script>
 <script>
         var monTableau = Array();

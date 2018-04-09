@@ -10,32 +10,24 @@ class Generation:
         self.example_id = example_id
         self.generation = -1
 
+    # Initialize all the components needed for ElasticSearch
     def import_values(self,resultat,generation,evaluation=[]):
-
         average = 0
-
         self.min_evaluation = min(evaluation)
-
         self.generation = generation
-
         self.result_min = min(resultat)
-
-        print("Generation : " + str(generation) + " result min : " + str(self.result_min) + " evaluation : " + str(self.min_evaluation))
-
         self.result_max = max(resultat)
 
         for x in resultat:
             average += x
 
         self.average = average/len(resultat)
-
         self.send_to_elastic()
 
+    # Index data
     def send_to_elastic(self):
         es = Elasticsearch()
-
         dic = self.__dict__()
-
         es.index(index="result_generation_algo_distribution_girl",doc_type="generation",body=dic)
 
     def __str__(self):

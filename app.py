@@ -56,8 +56,6 @@ def genetic():
 
 @app.route('/generate', methods=['POST'])
 def generer():
-
-
     tab = request.form['tab'].split(',')
 
     student = []
@@ -88,7 +86,6 @@ def generer():
         return render_template('genetic.html', error=messageError,student=student,marks=marks)
 
     return render_template('geneticResult.html',  groups = class_.get_groups(), classe=class_)
-
 
 if __name__ == "__main__":
     app.run()

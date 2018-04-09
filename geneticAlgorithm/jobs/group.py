@@ -26,11 +26,9 @@ class Group:
             list_notes.append(student.average)
         return list_notes.index(max(list_notes))
 
-
     def girl_in_group(self):
         new_list = list(map(attrgetter("girl"),self.students))
         return new_list.count(True)
-
 
     def __str__(self):
         string = "Group id : " + str(self.id)  + " group gap : " + str(self.gap) + "\n"
