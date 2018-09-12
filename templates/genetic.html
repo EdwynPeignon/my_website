@@ -1,23 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>Spread your students</title>
 
-    <!-- icon w3school -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <!-- Material Design Bootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.min.css" rel="stylesheet">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 .slidecontainer {
     width: 100%;
@@ -59,62 +45,25 @@
 </style>
 </head>
 <body>
-    <nav class="navbar fixed-top navbar-dark bg-dark">
-        <a href="/"><img src="static/images/ep.png" style="max-width: 60px;padding-left:10px"/></a>
-
-        <ul class="navbar-nav flex-row d-none d-md-flex">
-            <li class="align-self-center nav-item">
-                <a class="nav-link p-2" href="https://www.linkedin.com/in/edwyn-peignon-06520b91/" target="_blank">
-                    <i class="fa fa-linkedin-square fa-inverse fa-2x"></i></a>
-            </li>
-            <li class="align-self-center nav-item">
-                <a class="nav-link p-2" href="https://github.com/EdwynPeignon" target="_blank"><i class="fa fa-git-square fa-inverse fa-2x"></i></a>
-            </li>
-            <li class="align-self-center nav-item active">
-                <a class="p-2" href="/studies" style="color:white">Personal work</a>
-
-            </li>
-            <li class="align-self-center nav-item active">
-                <a class="p-2" href="/contact" style="color:white">Contact me</a>
-            </li>
-        </ul>
-        <button class="navbar-toggler collapsed d-flex d-md-none" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse d-md-none" id="navbarsExample01" style="">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="p-2" href="/studies" style="color:white">Personal work</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="p-2" href="/contact" style="color:white">Contact me</a>
-                </li>
-                <li class="nav-item">
-                    <span class="nav-link"><a class="p-2" href="https://www.linkedin.com/in/edwyn-peignon-06520b91/" target="_blank">
-                        <i class="fa fa-linkedin-square fa-inverse fa-2x"></i></a><a class="p-2" href="https://github.com/EdwynPeignon" target="_blank">
-                        <i class="fa fa-git-square fa-inverse fa-2x"></i></a></span>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
+    {% include 'navbar.html' %}
 
     <div class="container mb-3" style="padding-top:100px;padding-bottom:10px">
         <div class="row justify-content-center">
-            <h1>Spread your students</h1>
+            <h1>Grouping your students</h1>
         </div>
     </div>
     <div class="container mb-3">
         <div class="row">
-            <p>You're a teacher, you want to spread your classroom in multiple groups with the same average. Here is a tool for you.
-            This genetic algorithm will find you a great solution.</p>
             <p>
-                The mark should be a decimal and the name syntax shouldn't contain any special characters.
+                You are a teacher, you would like to group your students in multiple groups with the same average mark. Here is a tool for you : this genetic algorithm will be a great solution.
+            </p>
+            <p>
+                The mark should be a decimal number and the name of the student should not contain any special characters.
             </p>
         </div>
         <div class="row">
             <p>
-                Here are some example of syntax for the name :
+                Here are some examples of syntax for the name :
             </p>
             <ul>
                 <li>student_*</li>
@@ -126,9 +75,9 @@
     <div class="container">
         <div class="row">
             <p>
-                <span class="text-warning">Be aware that the algorithm can take some times( at least 40 persons ).</span> To avoid this situation you can decrease the
+                <span class="text-warning">Be aware that the algorithm can take times ( from 30 persons ).</span> To avoid this situation you can decrease the
                 number of  <a href="#" data-toggle="tooltip" title="Learn more about it downside the web page."> generation</a>.
-                You can stop from the 130th generation, you'll steal have great result.
+                You can stop at the 130th generation, you will steal have great results.
             </p>
         </div>
     </div>
@@ -185,6 +134,7 @@
                                 <input type="hidden" id="tab" name="tab" />
                                 <input type="hidden" id="slidebar" name="slidebar" />
                                 <button type="submit" class="btn btn-primary">Generate</button>
+                                <i id="spin" class="fa fa-spinner w3-spin" style="font-size:20px;display:none"></i>
                             </form>
                             <p style="color:red">{{error}}</p>
                         </div>
@@ -203,23 +153,26 @@
         </div>
         <div class="row">
             <ul>
-                <li>Specimen : it represent an object with specific attributes. In our case it is represented by a list of students with specific attribution to a group for each student.</li>
-                <li>Population : it represent the number of specimens. </li>
-                <li>Generation : it represent the number of reproduction of the population. The first parents will be the generation 0, their child will represent the generation 1 and so on.</li>
-                <li>Selection : it represent how you'll define the elite of the population.</li>
-                <li>Reproduction : from the selected population you'll make next generation based on them.</li>
+                <li>Specimen : it represents an object with specific attributes. In our case, it is represented by a list of students with specific attribution to a group for each student.</li>
+                <li>Population : it represents the number of specimens. </li>
+                <li>Generation : it represents the number of reproduction of the population. The first parents will be the generation 0, their children will represent the generation 1 and so on.</li>
+                <li>Selection : it represents how you will define the elite of the population.</li>
+                <li>Reproduction : from the selected population you will make next generation based on them.</li>
             </ul>
         </div>
         <div class="row">
-            <p>This genetic algorithm has a started population of 256, it's a power of 2 because I choose to make a selection by tournament. As it said 2 specimens taken randomly will be
-            in competition, only one will be choose according to predefined criteria. They are more than one type of selection, I tried an elitist one like just keep the first half of the population.
-            Although the problem was the population tend to look alike to each others. Selection by tournament show more diversity and has better results in the long run.
+            <p>This genetic algorithm has a started population of 256 specimens, it's a power of 2 because I chose to make a selection by tournament. Two specimens are taken randomly and will be
+            in competition, only one will be chosen according to predefined criteria. There is more than one type of selection, I tried an elitist one which just kept the first half of the population.
+            However, the problem was that the population tended to look alike to each others. Selection by tournament show more diversity and has better results in the long run.
             </p>
         </div>
         <div class="row">
-            <p>After selecting the half of the population I reproduce them to reach the initial population number. I used two types of reproduction one is to mutate a part of the elite population giving
-                 birth to a new generation with small variation. The second one was to mixed two specimen into one, you can imagine an ADN and your taking the first part of one to combine to the second ADN.
-                And you repeat the operation till you get a satisfactory result. You maybe won't find the best solution but you'll get a great solution.
+            <p>After selecting the half of the population, I reproduce them to reach the initial population number.
+            I used two types of reproduction. One is to mutate a part of the elite population by giving birth to
+            a new generation with small variation. The second one was to mix two specimens into one : you can
+            imagine an DNA and taking the first part of one to combine to the second DNA.
+            You repeat the operation untill you get a satisfactory result. You will maybe not
+            find the best solution but you will get a greater solution.
             </p>
         </div>
         <div class="row justify-content-center">
@@ -227,18 +180,18 @@
         </div>
         <div class="row">
             <p>
-                Having goods result on one try wasn't enough to ensure the performance of my algorithm. Then I indexed 100 tries results on ElasticSearch and made some visualisation
-                 on Kibana. The evaluation of a specimen was comparing the gap between the highest group average with the lowest group average. Better was the evaluation lowest was the gap.
-                You can see below a graph showing the gap average according to ascending generation. After the 100th generation the gap in average is under 0.1.
+                Having good result on one try wasn't enough to ensure the performance of my algorithm. Thus, I indexed 100 tries results on ElasticSearch and made some visualisations
+                 on Kibana. The evaluation of a specimen was to measure the gap between the highest group average with the lowest group average. Lowest was the gap, better was the evaluation.
+                You can see below a graph showing the gap average according to ascending generation. After the 100th generation the gap of averages is under 0.1.
             </p>
         </div>
     </div>
     <div class="container mb-3" style="margin-top:30px;">
         <div class="row row justify-content-center">
-            <h4>Graphic showing the evolution of the solution through the generations</h4>
+            <h4>Graph showing the evolution of the solution through the generations</h4>
         </div>
         <div class="row">
-            <img src="static/images/graph.png"  class="mx-auto d-block border border-dark rounded" style="max-height: 500px" alt="" />
+            <img src="static/images/graph.png"  class="mx-auto d-block border border-light rounded" style="max-height: 500px" alt="" />
         </div>
     </div>
 
@@ -267,6 +220,7 @@ slider.oninput = function() {
 }
 $('#form').submit(function() {
     document.getElementById("slidebar").value = document.getElementById("myRange").value ;
+    document.getElementById("spin").style.display = "";
     return true;
 });
 $(document).ready(function(){

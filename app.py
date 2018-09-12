@@ -39,9 +39,8 @@ def send():
     body = message
     msg.attach(MIMEText(body, 'plain'))
 
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.starttls()
-    server.login(toaddr, setting.PASSWORD)
+    server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+    server.login(toaddr, setting.PASSWORD_GOOGLE)
     text = msg.as_string()
     server.sendmail(fromaddr, toaddr, text)
     print("done")
@@ -79,13 +78,11 @@ def generer():
     if len(marks) < 4:
         return render_template('genetic.html', error="Add at least 4 students.",student=student,marks=marks)
 
-    try:
-        class_ =  main(student,marks,number_of_groups,int(request.form['slidebar']))
-    except:
-        messageError = "Error, check if you have the right syntax. If your syntax is right you can report me the bug via the contact tab."
-        return render_template('genetic.html', error=messageError,student=student,marks=marks)
 
-    return render_template('geneticResult.html',  groups = class_.get_groups(), classe=class_)
+    class_ =  main(student,marks,number_of_groups,int(request.form['slidebar']))
+
+
+    return render_template('geneticResult.html',  groups = class_.groups, classe=class_)
 
 if __name__ == "__main__":
     app.run()

@@ -47,7 +47,7 @@ class Genetique:
                 new_student = Student(student.id,student.average,student.name)
                 student_list.append(new_student)
                 id += 1
-            class_.set_students(student_list)
+            class_.students = student_list
             self.classes.append(class_)
 
     # Index data to ES
@@ -88,21 +88,21 @@ class Genetique:
             first_index = random.random() * half
             second_index = random.random() * half + half
 
-            rupture_point = int(random.random() * (len(liste[0].get_students()) - 1))
+            rupture_point = int(random.random() * (len(liste[0].students) - 1))
 
             new_specimen = Class(i + max_index)
 
             liste[int(first_index)].students.sort(key=attrgetter('id'))
             liste[int(second_index)].students.sort(key=attrgetter('id'))
-            for student in liste[int(first_index)].get_students()[:rupture_point] + liste[int(
-                    second_index)].get_students()[rupture_point:]:
+            for student in liste[int(first_index)].students[:rupture_point] + liste[int(
+                    second_index)].students[rupture_point:]:
 
                 new_student = Student(student.id, student.average,student.name, student.group)
                 new_student.girl = student.girl
 
                 new_students.append(new_student)
 
-            new_specimen.set_students(new_students)
+            new_specimen.students = new_students
 
             new_specimen.generation = max(liste[int(first_index)].generation,liste[int(second_index)].generation) + 1
 
@@ -152,20 +152,20 @@ class Genetique:
         for class_ in liste:
             new_class = Class(count)
 
-            for student in class_.get_students():
+            for student in class_.students:
                 new_class.add_student(student)
 
-            for group in class_.get_groups():
+            for group in class_.groups:
                 new_class.add_group(group)
 
-            first_random_index = int(random.random() * len(new_class.get_students()))
+            first_random_index = int(random.random() * len(new_class.students))
             second_random_index = first_random_index
             while first_random_index == second_random_index:
-                second_random_index = int(random.random() * len(new_class.get_students()))
+                second_random_index = int(random.random() * len(new_class.students))
 
 
             while first_random_index==second_random_index or new_class.students[first_random_index].group==new_class.students[second_random_index].group:
-                second_random_index = int(random.random() * len(new_class.get_students()))
+                second_random_index = int(random.random() * len(new_class.students))
 
             variable = new_class.students[first_random_index].group
 

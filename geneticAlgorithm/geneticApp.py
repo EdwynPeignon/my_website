@@ -42,7 +42,7 @@ def main(names,marks,number_groups,numberGeneration):
             if class_.generation > max_reproduction:
                 max_reproduction = class_.generation
 
-    for group in gen.first_student.get_groups():
+    for group in gen.first_student.groups:
         print(group)
 
     return gen.first_student

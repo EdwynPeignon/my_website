@@ -1,22 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Edwyn Peignon</title>
-
-    <!-- icon w3school -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <!-- Material Design Bootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.min.css" rel="stylesheet">
 
     <style>
         hr.style-one {
@@ -25,47 +10,10 @@
         background: #333;
         background-image: linear-gradient(to right, #ccc, #333, #ccc);
     }</style>
+
 </head>
 <body style="padding-top:68.5px;font-family:Gill Sans, sans-serif">
-    <nav class="navbar fixed-top navbar-dark bg-dark">
-        <a href="/"><img src="static/images/ep.png" style="max-width: 60px;padding-left:10px"/></a>
-
-        <ul class="navbar-nav flex-row d-none d-md-flex">
-            <li class="align-self-center nav-item">
-                <a class="nav-link p-2" href="https://www.linkedin.com/in/edwyn-peignon-06520b91/" target="_blank">
-                    <i class="fa fa-linkedin-square fa-inverse fa-2x"></i></a>
-            </li>
-            <li class="align-self-center nav-item">
-                <a class="nav-link p-2" href="https://github.com/EdwynPeignon" target="_blank"><i class="fa fa-git-square fa-inverse fa-2x"></i></a>
-            </li>
-            <li class="align-self-center nav-item active">
-                <a class="p-2" href="/studies" style="color:white">Personal work</a>
-
-            </li>
-            <li class="align-self-center nav-item active">
-                <a class="p-2" href="/contact" style="color:white">Contact me</a>
-            </li>
-        </ul>
-        <button class="navbar-toggler collapsed d-flex d-md-none" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse d-md-none" id="navbarsExample01" style="">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="p-2" href="/studies" style="color:white">Personal work</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="p-2" href="/contact" style="color:white">Contact me</a>
-                </li>
-                <li class="nav-item">
-                    <span class="nav-link"><a class="p-2" href="https://www.linkedin.com/in/edwyn-peignon-06520b91/" target="_blank">
-                        <i class="fa fa-linkedin-square fa-inverse fa-2x"></i></a><a class="p-2" href="https://github.com/EdwynPeignon" target="_blank">
-                        <i class="fa fa-git-square fa-inverse fa-2x"></i></a></span>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
+    {% include 'navbar.html' %}
 
     <div class="container" style="padding-top:20px;text-align:center;">
         <div class="row col-4">
@@ -80,12 +28,14 @@
                 <div class="container">
                     <div class="row">
                         <div class="col">
-                            <h3>My Name is Edwyn Peignon and I'm looking for a sandwich course in Paris!</h3><br>
+                            <h3>My Name is Edwyn Peignon and I'm looking for either a job or an internship!</h3><br>
                             <p>I'm a student from ESEO (engineering school in France).
                                 I'm interested in data science and big data.
-                                I'm a passionate developer who needs interesting projects to work on.
-                                Most of my code are developed in python and java, but I'm adaptive and stay open to all proposals.
-                            </p>
+                                I'm a passionate developer who needs interesting projects to work on. I love to be
+                                Most of my codes are developed in python and java, but I'm adaptive and stay open to all proposals.
+                                I'm not afraid to work around the world and I'll be pleased to discover different cultures.
+                            </p><br>
+                            <p>You can download my resume </p>
                         </div>
                     </div>
 
@@ -106,24 +56,20 @@
         </div>
         <hr class="style-one">
         <div class="row">
-            <div class="col-12 offset-md-1 col-md-4">
-                <h3 class="mx-auto">ESEO</h3>
-                <h4 style="font-weight: bold;color: #111111;">2013 - 2019 </h4>
-                <img src="static/images/eseo.jpg" style="max-height:92.91px" class="rounded"/>
-                <h6 style="padding-top:5px">During my studies at ESEO I had a general formation in computer science, mathematics and team management.</h6>
-            </div><!--
-            <div class="col-md-4 col-12">
-                <h3 class="mx-auto">ESSCA</h3>
-                <h4 style="font-weight: bold;color: #111111;">2016 (2 month)</h4>
-                <img src="static/images/logo-essca.png" style="max-width:100px" class="rounded"/>
-                <h6 style="padding-top:5px">During my stay in Shanghai I studied chinese language and China's economy thanks to the courses I had at ESSCA.
-                    But the best part was discovering the Chinese's culture.</h6>
-            </div> -->
-            <div class="col-12 offset-md-2 col-md-4">
-                <h3 class="mx-auto">MOOC</h3>
-                <h4 style="font-weight: bold;color: #111111;">2016</h4>
+            <div class="col-12 col-md-4">
+                <img src="static/images/eseo.png" style="max-height:92.91px" class="rounded"/>
+                <h4 style="font-weight: bold;color: #111111;padding-top:5px">2013 - 2019 </h4>
+                <h6 style="padding-top:5px">During my studies at ESEO I followed general computer science and team management courses.</h6>
+            </div>
+            <div class="col-12 col-md-4">
                 <img src="static/images/mooc.png" style="max-height:92.91px" class="rounded"/>
+                <h4 style="font-weight: bold;color: #111111;padding-top:5px">2016</h4>
                 <h6 style="padding-top:5px">I learned from the MOOC the foundation of project management.</h6>
+            </div>
+            <div class="col-md-4 col-12">
+                <img src="static/images/toeic.png" style="max-width:100px" class="rounded"/>
+                <h4 style="font-weight: bold;color: #111111;padding-top:5px">2018</h4>
+                <h6 style="padding-top:5px">Score : 860/990</br>Listening : 480/495<br>Reading : 380/495</h6>
             </div>
         </div>
     </div>
@@ -167,7 +113,7 @@
                 <img src="static/images/cnp.png" style="max-height:92.91px" class="rounded"/>
                 <p style="padding-top:5px">During my internship my main task was to create a website from scratch,
                     I was helped by my mentor Grégory Florance. We developed it in JAVA with SPRING framework.
-                    We had to team work with foreign companies because they were our data base.
+                    We had to team work with foreign companies because they were our data base owners.
                     We worked with agile methodology so we had to weekly meet-up with CNP's representatives to have an overlook on the progress of the project.
                 </p>
                 <p>You can visit the website <a href="https://dic.cnp.fr/kid-web/" target="_blank">here</a>.</p>
@@ -175,51 +121,6 @@
         </div>
 
     </div>
-    <!--
-    <div class="container mb-3" style="padding-top:30px;text-align:center;">
-        <div class="row col-4">
-            <h3>Personal work</h3>
-        </div>
-        <hr class="style-one">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-6">
-                <h3>Elasticsearch</h3>
-                <img src="static/images/elasticsearch.svg" style="max-height:92.91px" class="rounded"/>
-                <p>
-                    Indexing data, seting up an elasticsearch server, configuring node and searching (still working on).
-                </p>
-            </div>
-            <div class="col-12 col-md-6">
-                <h3>Kibana</h3>
-                <img src="static/images/kibana.svg" style="max-height:92.91px" class="rounded"/>
-                <p>
-                    Creating elementary's visualisation and analyzing it.
-                </p>
-            </div>
-        </div>
-    </div> -->
-    <!--
-    <div class="container" style="padding-top:30px;">
-        <div class="row col-4">
-            <h3>Personnal Goal</h3>
-        </div>
-        <hr class="style-one">
-        <div class="container">
-            <div class="row ">
-                <div class="col align-self-center" style="text-align:center;">
-                    <h4 style="margin-bottom:-0.9rem">Elasticsearch</h4><br>
-                    <p>I'm actually training myself for the coming certification of elasticsearch.<br>Currently I know how to configure an
-                    infrastructures with nodes. And making some research into the data.</p>
-                    <h4 style="margin-bottom:-0.9rem">Kibana</h4><br>
-                    <p>I'm working on some visualisation to train myself.</p>
-                    <h4 style="margin-bottom:-0.9rem">Genetic Algorithm</h4><br>
-                    <p>I'm working on some visualisation to train myself.</p>
-                </div>
-            </div>
-        </div>
-
-    </div>-->
-
     <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Popper -->
@@ -244,7 +145,7 @@
                 labels: ["Python", "Java", "Javascript", "C", "Others"],
                 datasets: [
                     {
-                        data: [35, 35, 10, 10, 10],
+                        data: [42, 38, 10, 5, 5],
                         backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
                         hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"],
                         label: 'Development skills'
