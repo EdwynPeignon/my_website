@@ -4,17 +4,6 @@ This Repository aim to build my web site
 # Configuration
 To work on the project:
 
-Download the git repository:
-
-```
-git clone https://github.com/LOLpredictor/LOL_API_WRAPPER.git
-```
-
-Enter into the repository:
-```
-cd LOL_API_WRAPPER
-```
-
 
 Build the virtual environement:
 
